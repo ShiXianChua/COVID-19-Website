@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>COVID-19</title>
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			position: relative;
+			padding: 0;
+			margin: 0;
+		}
+
+		h2, h3 {
+			margin-top: 0;
+			font-family: Impact;
+			font-weight: 400;
+		}
+
+		p {
+			font-family: candara;
+			font-size: 1.1em;
+		}
+
+		#fixed-header{
+			position: fixed;
+			background: url(corona-background2.jpg) no-repeat center;
+			background-repeat: no-repeat;
+			background-size: 120% 100%;
+			height: 100vh;
+			width: 100vw;
+			z-index: 0;
+		}
+
+		@keyframes fadeIn1 {
+			0% {opacity: 0;}
+			100% {opacity: 1;}
+		}
+
+		#fixed-header a {
+			display: block;
+			text-decoration: none;
+			color: white;
+			position: absolute;
+			height: 40px;
+			width: 150px;
+			padding-top: 10px;
+			text-align: center;
+			font-family: TypoldExtended,Typold,Helvetica,Arial,sans-serif;
+			font-weight: 100;
+			font-size: 12px;
+			background-color: black;
+			background-color: rgb(0, 0, 0, 0.5);
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-75px);
+			animation: fadeIn1 linear 2s;
+		}
+
+		#fixed-header a:hover {
+			background: rgb(30, 30, 30, 0.7);
+		}
+
+		.arrow-down {
+			border: solid white;
+			border-width: 0 2px 2px 0;
+			display: inline-block;
+			padding: 3px;
+			transform: rotate(45deg);
+		}
+
+		#nav-bar {
+			margin: 0;
+			padding: 0;
+		}
+
+		#content {
+			margin: 0 auto;
+			box-sizing: border-box;
+			top: 100vh;
+			position: relative;
+			background: rgb(240, 240, 240);
+			z-index: 1;
+		}
+
+		#introduction {
+			background: rgba(100, 0, 0, 0.3);
+			position: relative;
+		}
+
+		#introduction article {
+			min-height: 254px;
+			max-width: 900px;
+			margin: 0 auto 30px;
+			padding: 0 60px 20px;
+			text-align: center;
+			color: white;
+			background: rgba(100, 0, 0, 0.3);
+			font-family: "Gotham A", "Gotham B", sans-serif;
+		}
+
+		#introduction article h2 {
+			margin: 0;
+			padding: 45px 20px 0;
+			color: rgba(100, 0, 0, 0.8);
+			font-size: 5.8em;
+			font-weight: 400;
+			letter-spacing: 9px;
+		}
+
+		#introduction article h3 {
+			margin: 0;
+			padding: 0 0 10px;
+			font-size: 1.5em;
+			color: rgb(220, 180, 180);
+			letter-spacing: 17px;
+			transform: translateX(5px);
+		}
+
+		#introduction article p {
+			margin-top: 0;
+			color: #cccccc;
+			color: white;
+			text-align: justify;
+		}
+
+		#introduction::before {
+			content: "";
+			display: block;
+			position: absolute;
+			border: 3px solid rgb(220, 180, 180);
+			width: 30em;
+			height: 92%;
+			left: 50%;
+			top: 10%;
+			transform: translateX(-50%);
+			z-index: -1;
+		}
+
+		#content section::before {
+			content: '';
+			display: block;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-repeat: no-repeat !important;
+			background-size: cover !important;
+			opacity: 0.1;
+			z-index: -1;
+		}
+
+		#content section:nth-of-type(1)::before{
+			background: url(corona-background-1.jpg);
+			opacity: 0.3;
+		}
+
+		#content section:nth-of-type(2)::before{
+			background: url(corona-background-2.jpg);
+			opacity: 0.3;
+		}
+
+		#content section:nth-of-type(3)::before{
+			background: url(corona-background-3.jpg);
+		}
+
+		#content section:nth-of-type(4)::before{
+			box-sizing: border-box;
+			border-left: 500px solid white;
+			background: url(corona-background-4.jpg) center;
+		}
+
+		#content section:nth-of-type(5)::before{
+			background: url(corona-background-5.jpg);
+			opacity: 0.2;
+		}
+
+		#content section {
+			position: relative;
+			min-height: 350px;
+			width: 95%;
+			margin: 0 auto;
+			box-sizing: border-box;
+		}
+
+		#content section:nth-of-type(odd) {
+			box-shadow: -7px 5px 5px #bbbbbb;
+		}
+
+		#content section:nth-of-type(even) {
+			box-shadow: 7px 5px 5px #bbbbbb;
+		}
+
+		#content section h2 {
+			padding-top: 6%;
+			padding-left: 10%;
+			padding-right: 10%;
+			letter-spacing: 2px;
+		}
+
+		#content section p {
+			margin: 0;
+			padding: 0 10%;
+			font-weight: 700;
+			color: #101010;
+			text-align: justify;
+			padding-bottom: 80px;
+		}
+
+		#content hr {
+			width: 97%;
+		}
+
+		.img-container {
+			height: 350px;
+			width: 600px;
+			position: relative;
+			box-sizing: inherit;
+		}
+
+		#content section:nth-of-type(odd) .img-container {
+			float: right;
+			margin-left: 70px;
+		}
+
+		#content section:nth-of-type(even) .img-container {
+			float: left;
+			margin-right: 70px;
+		}
+
+	    .img-container img {
+	    	box-sizing: inherit;
+	    	height: inherit;
+	    	width: inherit;
+	    }
+
+	    .img-container:hover div {
+	    	width: 100%;
+	    }
+
+	    .overlay {
+	    	background: rgba(0, 0, 0, 0.7);
+	    	width: 0;
+	    	height: 100%;
+	    	position: absolute;
+	    	top: 0;
+	    	overflow: hidden;
+	    	white-space: nowrap;
+	    	transition: 0.5s ease;
+	    	font-size: 16px;
+	    }
+
+	    #content section:nth-of-type(odd) .overlay {
+	    	right: 0;
+	    }
+
+	    #content section:nth-of-type(even) .overlay {
+	    	left: 0;
+	    }
+
+	    .overlay a {
+	    	display: block;
+	    	text-decoration: none;
+	    	color: white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border: 1px solid white;
+			padding: 10px;
+			border-radius: 3px;
+			font-family: TypoldExtended,Typold,Helvetica,Arial,sans-serif;
+			font-weight: 100;
+			font-size: 10px;
+			opacity: 0.7;
+	    }
+
+	    .overlay a:hover {
+	    	opacity: 1;
+	    	border-width: 2px;
+	    	font-size: 11px;
+	    	font-weight: 400;
+	    }
+
+	    footer {
+	    	margin-top: 50px;
+	    	padding: 30px;
+	    	background: rgb(23, 23, 23);
+	    	color: white;
+	    	text-align: center;
+	    }
+
+	    footer h3 {
+	    	font-weight: 300;
+	    	letter-spacing: 2px;
+	    }
+
+	    footer fieldset {
+	    	display: inline-block;
+	    	font-family: candara;
+			font-size: 1.1em;
+			letter-spacing: 2px;
+			color: white;
+			border-style: solid;
+			border-width: 1px;
+			width: 180px;
+			margin-bottom: 20px;
+			text-align: center;
+	    }
+
+		@media (max-width: 1150px){
+			.img-container {
+				width: 100%;
+				margin-bottom: 50px;
+			}
+
+			#content section p {
+				padding-bottom: 100px;
+			}
+
+			#content section:nth-of-type(4)::before{
+				border-left-width: 0;
+			}
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="fixed-header">
+		<a href="#content">START EXPLORING<br><i class="arrow-down"></i></a>
+	</div>
+	<nav id="nav-bar"></nav>
+	<div id="content">
+		<!-- <hr> -->
+		<div id="introduction">	
+			<article>
+				<h2>COVID-19</h2>
+				<h3>VIRUS INFECTION</h3>
+				<p>
+					The COVID-19 pandemic, also known as the coronavirus pandemic, is an ongoing pandemic of coronavirus disease 2019 (COVID‑19) caused by severe acute respiratory syndrome coronavirus 2 (SARS‑CoV‑2). The outbreak was first identified in Wuhan, China, with the earliest recorded patient's illness beginning in early December 2019. The World Health Organization declared the outbreak a Public Health Emergency of International Concern on 30 January, and a pandemic on 11 March. As of 7 May 2020, more than 3.75 million cases of COVID-19 have been reported in over 187 countries and territories, resulting in more than 263,000 deaths. More than 1.24 million people have recovered.
+				</p>
+			</article>
+		</div>
+		</section>
+		<!-- <hr> -->
+		<section>
+			<div class="img-container">
+				<img src="pic1.jpg" alt="pic1.jpg" class='show-on-scroll'>
+				<div class='overlay'>
+					<a href="statistics.html">
+						LEARN MORE
+					</a>
+				</div>
+			</div>
+			<h2>
+				COVID-19 Statistics
+			</h2>
+			<p>
+				Live statistics of COVID-19, tracking the number of confirmed cases, recovered patients, and death toll due to the virus infection. See the overall figure worldwide or filter the results according to country.
+			</p>
+		</section>
+		<hr>
+		<section>
+			<div class="img-container">
+				<img src="pic2.jpeg" alt="pic2.jpg">
+				<div class='overlay'>
+					<a href="precautions of covid 19.html">
+						LEARN MORE
+					</a>
+				</div>
+			</div>
+			<h2>
+				WHO giving advice for the public on precautions to take during COVID-19 
+			</h2>
+			<p>
+				The COVID-19 is impacting globally. Most countries around the world have seen cases of COVID-19 and many are experiencing outbreaks. With advices from WHO for the public on precautions, some countries have succeeded in slowing the outbreaks by practicing it in their daily routine.
+			</p>
+		</section>
+		<hr>
+		<section>
+			<div class="img-container">
+				<img src="pic3.jpg" alt="pic3.jpg">	
+				<div class='overlay'>
+					<a href="Checker.php">
+						LEARN MORE
+					</a>
+				</div>
+			</div>
+			<h2>
+				Testing for COVID-19 (self-checker)
+			</h2>
+			<p>
+				Use our interactive tool to check yourself for coronavirus symptoms and learn how to protect yourself and others from COVID-19. Nevertheless, this self-checker is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a medical professional for serious symptoms or emergencies.
+			</p>
+		</section>
+		<hr>
+		<section>
+			<div class="img-container">
+				<img src="pic4.jpg" alt="pic4.jpg">
+				<div class='overlay'>
+					<a href="WHO.html">
+						LEARN MORE
+					</a>
+				</div>
+			</div>
+			<h2>
+				WHO Guidelines on Maintenance of Essential Health Services in Countries
+			</h2>
+			<p>
+				The COVID-19 pandemic is straining health systems worldwide. The rapidly increasing demand on health facilities and health care workers threatens to leave some health systems overstretched and unable to operate effectively.To help countries navigate through these challenges, the World Health Organization (WHO) has updated operational planning guidelines in balancing the demands of responding directly to COVID-19 while maintaining essential health service delivery, and mitigating the risk of system collapse.
+			</p>
+		</section>
+		<hr>
+		<section>
+			<div class="img-container">
+				<img src="pic5.jpg" alt="pic5.jpg">
+				<div class='overlay'>
+					<a href="Vaccine.html">
+						LEARN MORE
+					</a>
+				</div>
+			</div>
+			<h2>
+				Development of COVID-19 Vaccine
+			</h2>
+			<p>
+				A COVID-19 vaccine is a hypothetical vaccine against coronavirus disease 2019 (COVID‑19). Although no vaccine has completed clinical trials, there are multiple attempts in progress to develop such a vaccine. 
+			</p>
+		</section>
+		<footer style='overflow: hidden;'>
+			<h3>PRESENTED BY</h3>
+			<fieldset style='transform: translateY(0px);'>
+				<legend>CHUA SHI XIAN</legend>
+				WIE180011
+			</fieldset>
+			<fieldset>
+				<legend>TAN EUNICE</legend>
+				WIE180041
+			</fieldset>
+			<fieldset>
+				<legend>LUAR YONG TING</legend>
+				WIE180021
+			</fieldset>
+			<fieldset>
+				<legend>TAN YONG KEAT</legend>
+				WIE180044
+			</fieldset>
+		</footer>
+	</div>
+</body>
+</html>
